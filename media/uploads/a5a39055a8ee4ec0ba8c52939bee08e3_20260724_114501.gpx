@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="BRO_Road_Database"
+  xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Project Beacon</name>
+    <desc>BRO Project Beacon - All Strategic Roads</desc>
+    <time>2026-06-29T07:04:10Z</time>
+  </metadata>
+  <trk>
+    <name>Srinagar–Sonamarg–Zojila–Drass Road</name>
+    <desc>Start: Srinagar | End: Zojila Pass (Zero Point) | Length: 95 km | NH-1</desc>
+    <type>road</type>
+    <trkseg>
+      <trkpt lat="34.083700" lon="74.797300">
+        <ele>1258.7</ele>
+        <name>START: Srinagar</name>
+      </trkpt>
+      <trkpt lat="34.101480" lon="74.864880">
+        <ele>2076.0</ele>
+      </trkpt>
+      <trkpt lat="34.119260" lon="74.932460">
+        <ele>2711.7</ele>
+      </trkpt>
+      <trkpt lat="34.137040" lon="75.000040">
+        <ele>3165.8</ele>
+      </trkpt>
+      <trkpt lat="34.154820" lon="75.067620">
+        <ele>3438.2</ele>
+      </trkpt>
+      <trkpt lat="34.172600" lon="75.135200">
+        <ele>3529.0</ele>
+      </trkpt>
+      <trkpt lat="34.190380" lon="75.202780">
+        <ele>3438.2</ele>
+      </trkpt>
+      <trkpt lat="34.208160" lon="75.270360">
+        <ele>3165.8</ele>
+      </trkpt>
+      <trkpt lat="34.225940" lon="75.337940">
+        <ele>2711.7</ele>
+      </trkpt>
+      <trkpt lat="34.243720" lon="75.405520">
+        <ele>2076.0</ele>
+      </trkpt>
+      <trkpt lat="34.261500" lon="75.473100">
+        <ele>1258.7</ele>
+        <name>END: Zojila Pass (Zero Point)</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <wpt lat="34.083700" lon="74.797300">
+    <name>START: Srinagar</name>
+    <desc>Srinagar–Sonamarg–Zojila–Drass Road | NH-1</desc>
+    <sym>Flag, Blue</sym>
+  </wpt>
+  <wpt lat="34.261500" lon="75.473100">
+    <name>END: Zojila Pass (Zero Point)</name>
+    <desc>Srinagar–Sonamarg–Zojila–Drass Road | NH-1</desc>
+    <sym>Flag, Red</sym>
+  </wpt>
+  <trk>
+    <name>Kargil–Padum (Suru Valley) Road</name>
+    <desc>Start: Kargil | End: Padum (Zanskar) | Length: 230 km | NH-301</desc>
+    <type>road</type>
+    <trkseg>
+      <trkpt lat="34.553900" lon="76.134900">
+        <ele>1520.0</ele>
+        <name>START: Kargil</name>
+      </trkpt>
+      <trkpt lat="34.506435" lon="76.183974">
+        <ele>1999.1</ele>
+      </trkpt>
+      <trkpt lat="34.458970" lon="76.233048">
+        <ele>2434.6</ele>
+      </trkpt>
+      <trkpt lat="34.411504" lon="76.282122">
+        <ele>2826.6</ele>
+      </trkpt>
+      <trkpt lat="34.364039" lon="76.331196">
+        <ele>3175.0</ele>
+      </trkpt>
+      <trkpt lat="34.316574" lon="76.380270">
+        <ele>3479.9</ele>
+      </trkpt>
+      <trkpt lat="34.269109" lon="76.429343">
+        <ele>3741.2</ele>
+      </trkpt>
+      <trkpt lat="34.221643" lon="76.478417">
+        <ele>3959.0</ele>
+      </trkpt>
+      <trkpt lat="34.174178" lon="76.527491">
+        <ele>4133.2</ele>
+      </trkpt>
+      <trkpt lat="34.126713" lon="76.576565">
+        <ele>4263.9</ele>
+      </trkpt>
+      <trkpt lat="34.079248" lon="76.625639">
+        <ele>4351.0</ele>
+      </trkpt>
+      <trkpt lat="34.031783" lon="76.674713">
+        <ele>4394.6</ele>
+      </trkpt>
+      <trkpt lat="33.984317" lon="76.723787">
+        <ele>4394.6</ele>
+      </trkpt>
+      <trkpt lat="33.936852" lon="76.772861">
+        <ele>4351.0</ele>
+      </trkpt>
+      <trkpt lat="33.889387" lon="76.821935">
+        <ele>4263.9</ele>
+      </trkpt>
+      <trkpt lat="33.841922" lon="76.871009">
+        <ele>4133.2</ele>
+      </trkpt>
+      <trkpt lat="33.794457" lon="76.920083">
+        <ele>3959.0</ele>
+      </trkpt>
+      <trkpt lat="33.746991" lon="76.969157">
+        <ele>3741.2</ele>
+      </trkpt>
+      <trkpt lat="33.699526" lon="77.018230">
+        <ele>3479.9</ele>
+      </trkpt>
+      <trkpt lat="33.652061" lon="77.067304">
+        <ele>3175.0</ele>
+      </trkpt>
+      <trkpt lat="33.604596" lon="77.116378">
+        <ele>2826.6</ele>
+      </trkpt>
+      <trkpt lat="33.557130" lon="77.165452">
+        <ele>2434.6</ele>
+      </trkpt>
+      <trkpt lat="33.509665" lon="77.214526">
+        <ele>1999.1</ele>
+      </trkpt>
+      <trkpt lat="33.462200" lon="77.263600">
+        <ele>1520.0</ele>
+        <name>END: Padum (Zanskar)</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <wpt lat="34.553900" lon="76.134900">
+    <name>START: Kargil</name>
+    <desc>Kargil–Padum (Suru Valley) Road | NH-301</desc>
+    <sym>Flag, Blue</sym>
+  </wpt>
+  <wpt lat="33.462200" lon="77.263600">
+    <name>END: Padum (Zanskar)</name>
+    <desc>Kargil–Padum (Suru Valley) Road | NH-301</desc>
+    <sym>Flag, Red</sym>
+  </wpt>
+  <trk>
+    <name>Baltal–Amarnath (Pilgrim Track)</name>
+    <desc>Start: Baltal | End: Amarnath Cave | Length: 14 km | State Road</desc>
+    <type>road</type>
+    <trkseg>
+      <trkpt lat="34.204000" lon="75.511000">
+        <ele>1366.4</ele>
+        <name>START: Baltal</name>
+      </trkpt>
+      <trkpt lat="34.205380" lon="75.497970">
+        <ele>2274.2</ele>
+      </trkpt>
+      <trkpt lat="34.206760" lon="75.484940">
+        <ele>2980.2</ele>
+      </trkpt>
+      <trkpt lat="34.208140" lon="75.471910">
+        <ele>3484.5</ele>
+      </trkpt>
+      <trkpt lat="34.209520" lon="75.458880">
+        <ele>3787.1</ele>
+      </trkpt>
+      <trkpt lat="34.210900" lon="75.445850">
+        <ele>3888.0</ele>
+      </trkpt>
+      <trkpt lat="34.212280" lon="75.432820">
+        <ele>3787.1</ele>
+      </trkpt>
+      <trkpt lat="34.213660" lon="75.419790">
+        <ele>3484.5</ele>
+      </trkpt>
+      <trkpt lat="34.215040" lon="75.406760">
+        <ele>2980.2</ele>
+      </trkpt>
+      <trkpt lat="34.216420" lon="75.393730">
+        <ele>2274.2</ele>
+      </trkpt>
+      <trkpt lat="34.217800" lon="75.380700">
+        <ele>1366.4</ele>
+        <name>END: Amarnath Cave</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+  <wpt lat="34.204000" lon="75.511000">
+    <name>START: Baltal</name>
+    <desc>Baltal–Amarnath (Pilgrim Track) | State Road</desc>
+    <sym>Flag, Blue</sym>
+  </wpt>
+  <wpt lat="34.217800" lon="75.380700">
+    <name>END: Amarnath Cave</name>
+    <desc>Baltal–Amarnath (Pilgrim Track) | State Road</desc>
+    <sym>Flag, Red</sym>
+  </wpt>
+</gpx>

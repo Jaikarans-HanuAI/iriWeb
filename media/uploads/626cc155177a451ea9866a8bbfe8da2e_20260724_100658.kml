@@ -1,0 +1,7 @@
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Placemark>
+  <name>Test Place</name>
+  <description>A test location</description>
+  <Point><coordinates>-73.9857,40.7484,0</coordinates></Point>
+</Placemark>
+</kml>

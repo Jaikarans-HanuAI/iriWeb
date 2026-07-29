@@ -1,0 +1,163 @@
+{% load static %}
+{% load map_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iri Web - Geo Data Mapper</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'map_app/css/style.css' %}" />
+</head>
+<body>
+
+<div id="app">
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div class="logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>Iri<span class="highlight">Web</span></span>
+                </div>
+                <p class="subtitle" style="margin-top: 4px;">Geo Data Mapper</p>
+            </div>
+            <button id="btn-close-sidebar" style="background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer; padding: 5px;" title="Close Sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-section">
+            <h3><i class="fas fa-upload"></i> Upload Data</h3>
+            <form
+                id="upload-form"
+                action="{% url 'map_app:upload_file' %}"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                {% csrf_token %}
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-zone-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your file here</p>
+                        <span class="or-divider">or</span>
+                        <label for="file-upload" class="btn btn-primary">Browse Files</label>
+                        {{ form.file }}
+                    </div>
+                    <div class="file-info" id="file-info" style="display:none;">
+                        <i class="fas fa-file-alt"></i>
+                        <span id="file-name"></span>
+                        <button type="button" class="btn-remove" id="remove-file">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="help-text">
+                    <i class="fas fa-info-circle"></i>
+                    Supported: CSV, GPX
+                </p>
+                <button type="submit" class="btn btn-accent btn-full" id="submit-btn" disabled>
+                    <i class="fas fa-map-marker-alt"></i> Plot on Map
+                </button>
+            </form>
+        </div>
+
+        <div class="sidebar-section" id="files-section">
+            <h3><i class="fas fa-layer-group"></i> Uploaded Layers</h3>
+            
+            <div id="compare-controls" style="display: none; margin-bottom: 15px; padding: 12px; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0;">
+                <label style="display:block; margin-bottom:6px; font-weight:600; font-size:12px; color: #475569;">Left Map Layer:</label>
+                <select id="left-map-select" style="width:100%; margin-bottom:12px; padding:6px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px;"></select>
+                <label style="display:block; margin-bottom:6px; font-weight:600; font-size:12px; color: #475569;">Right Map Layer:</label>
+                <select id="right-map-select" style="width:100%; padding:6px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px;"></select>
+            </div>
+
+            <div class="files-list" id="files-list">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>No files uploaded yet</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <p>Drop CSV & GPX files to visualize geospatial data instantly.</p>
+        </div>
+    </aside>
+
+    <main id="map-container" style="display: flex; flex-direction: column; padding: 0;">
+        <div id="map-wrapper" style="flex: 1; position: relative; overflow: hidden; width: 100%;">
+            <button id="btn-open-sidebar" style="position: absolute; top: 20px; left: 20px; z-index: 1000; width: 44px; height: 44px; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: none; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); color: var(--text-primary); align-items: center; justify-content: center; font-size: 18px;" title="Open Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="map-split" style="display: flex; width: 100%; height: 100%;">
+                <div id="map" style="flex: 1; height: 100%;"></div>
+                <div id="map2" style="flex: 1; height: 100%; display: none; border-left: 2px solid #cbd5e1; position: relative;"></div>
+            </div>
+
+        <div id="map-tools">
+            <button class="map-tool-btn" id="btn-fit-all" title="Fit All Layers">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </button>
+            <button class="map-tool-btn" id="btn-compare" title="Compare Side-by-Side">
+                <i class="fas fa-columns"></i>
+            </button>
+            <button class="map-tool-btn" id="btn-chart" title="Toggle IRI Graph">
+                <i class="fas fa-chart-bar"></i>
+            </button>
+        </div>
+
+
+
+
+
+        <div id="notification-container"></div>
+
+        <div id="popup-content-template" style="display:none;">
+            <div class="custom-popup">
+                <h4 class="popup-title"></h4>
+                <div class="popup-body"></div>
+                <div class="popup-meta"></div>
+            </div>
+        </div>
+        </div>
+        
+        <div id="chart-panel" style="position: relative; height: 220px; border-top: 1px solid var(--border); background: var(--bg-secondary); padding: 10px 15px; display: none; flex-direction: row; gap: 15px; z-index: 10; flex-shrink: 0;">
+            <div style="width: 260px; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h4 style="font-size: 13px; color: var(--text-primary); margin:0;"><i class="fas fa-chart-line" style="color:var(--accent);"></i> IRI Profile Graph</h4>
+                </div>
+                <div style="font-size: 10px; color: var(--text-secondary); overflow-y: auto; line-height: 1.4; padding-right: 5px;">
+                    <div style="margin-bottom: 5px;"><strong><span style="color:#22c55e; font-size:12px;">■</span> 0.0 – 2.0 (Excellent):</strong><br>New or recently resurfaced. No maintenance needed.</div>
+                    <div style="margin-bottom: 5px;"><strong><span style="color:#90EE90; font-size:12px;">■</span> 2.0 – 4.0 (Good):</strong><br>Minor surface defects. Routine maintenance only.</div>
+                    <div style="margin-bottom: 5px;"><strong><span style="color:#eab308; font-size:12px;">■</span> 4.0 – 6.0 (Fair):</strong><br>Some maintenance needed. Periodic treatment advised.</div>
+                    <div style="margin-bottom: 5px;"><strong><span style="color:#f97316; font-size:12px;">■</span> 6.0 – 8.0 (Poor):</strong><br>Significant deterioration. Special maintenance required.</div>
+                    <div><strong><span style="color:#ef4444; font-size:12px;">■</span> 8.0+ (Very Poor):</strong><br>Structural failure risk. Reconstruction required urgently.</div>
+                </div>
+            </div>
+
+            <div id="chart-dynamic-container" style="flex: 1; display: flex; gap: 15px; overflow-x: auto; padding-bottom: 5px; border-left: 1px solid var(--border); padding-left: 15px;">
+                <!-- Canvases will be injected here dynamically -->
+            </div>
+            
+            <button id="btn-close-chart" style="position: absolute; top: 10px; right: 15px; background: none; border: none; cursor: pointer; color: var(--text-muted);"><i class="fas fa-times"></i></button>
+        </div>
+    </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'map_app/js/map.js' %}?v=10"></script>
+<script>
+    const MESSAGES = {
+        {% if messages %}
+            {% for message in messages %}
+                "{{ message.tags }}": "{{ message|escapejs }}",
+            {% endfor %}
+        {% endif %}
+    };
+    const CSRF_TOKEN = "{{ csrf_token }}";
+</script>
+</body>
+</html>
