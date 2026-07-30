@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="test"
-  xmlns="http://www.topografix.com/GPX/1/1">
-  <wpt lat="48.8566" lon="2.3522">
-    <name>Paris</name>
-    <ele>35</ele>
-  </wpt>
-</gpx>
